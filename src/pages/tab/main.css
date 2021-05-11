@@ -9,11 +9,6 @@ html, body {
 	height: 100vh;
 }
 
-div {
-	display: flex;
-	flex-wrap: wrap;
-}
-
 h1 {
 	font-size: 55px;
 }

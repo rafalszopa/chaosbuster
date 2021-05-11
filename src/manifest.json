@@ -12,7 +12,7 @@
     }
   },
   "chrome_url_overrides": {
-    "newtab": "tab.html"
+    "newtab": "index.html"
   },
   "background": {
     "service_worker": "background.js"
