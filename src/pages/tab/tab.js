@@ -9,11 +9,13 @@ Moon.use({
 
 Moon.run(() => {
 	const data = {
-		name: "Moon"
+		name: "Moon",
+		hello: "Hello world!",
+		boards: [{}],
 	};
 
 	return {
 		data,
-		view: <main />
+		view: <main data=data />
 	};
 });

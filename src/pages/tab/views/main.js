@@ -3,11 +3,11 @@ import board from './board';
 import sidebar from './sidebar';
 import topbar from './topbar';
 
-const { div, h2 } = Moon.view.m;
+const { div, main, h1 } = Moon.view.m;
 
-export default () => 
-    <div>
+export default ({ data }) => 
+    <main class="main">
         <topbar />
         <sidebar />
-        <board />
-    </div>;
+        <board data=data />
+    </main>;

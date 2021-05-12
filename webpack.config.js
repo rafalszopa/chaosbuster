@@ -70,9 +70,6 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
-		// new HtmlWebpackPlugin({
-		// 	template: path.join(__dirname, "/src/pages/tab/index.html"),
-		// }),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, "/src/pages/tab/index.html"),
 			chunks: ["tab"],

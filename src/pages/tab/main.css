@@ -1,7 +1,17 @@
+:root {
+	--main-background-color: #1E1E1E;
+	--main-color: #F3F3F3;
+
+	--sidebar-background-color: #191919;
+	--sidebar-color: #5E5E5E;
+}
+
 html, body {
 	margin: 0;
 	padding: 0;
 	font-family: Helvetica;
+	background: var(--main-background-color);
+	color: var(--main-color);
 }
 
 #root {
@@ -11,6 +21,11 @@ html, body {
 
 h1 {
 	font-size: 55px;
+}
+
+/* Why h2's parent gets h2 margin value? */
+h2 {
+	margin: 0;
 }
 
 p {
@@ -27,3 +42,17 @@ p {
 .a-t-c {text-align: center;}
 
 .m-y-3 > * {margin-top: 6px; margin-bottom: 6px;}
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 380px;
+	background-color: var(--sidebar-background-color);
+	color: var(--sidebar-color);
+}
+
+.main {
+	padding-left: 380px;
+}
