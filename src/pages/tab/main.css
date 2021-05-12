@@ -9,9 +9,10 @@
 html, body {
 	margin: 0;
 	padding: 0;
-	font-family: Helvetica;
+	font-family: 'Segoe UI';
 	background: var(--main-background-color);
 	color: var(--main-color);
+	height: 100%;
 }
 
 #root {
@@ -19,12 +20,9 @@ html, body {
 	height: 100vh;
 }
 
-h1 {
-	font-size: 55px;
-}
-
 /* Why h2's parent gets h2 margin value? */
 h2 {
+	font-weight: inherit;
 	margin: 0;
 }
 
@@ -43,6 +41,11 @@ p {
 
 .m-y-3 > * {margin-top: 6px; margin-bottom: 6px;}
 
+.icon {
+	margin-block-start: 20px;
+    margin-block-end: 40px;
+}
+
 .sidebar {
 	position: fixed;
 	top: 0;
@@ -55,4 +58,36 @@ p {
 
 .main {
 	padding-left: 380px;
+	height: 100%;
+}
+
+.board {
+	height: 100%;
+}
+
+.board__no-content {
+	display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.board__no-content__wrapper {
+	text-align: center;
+	max-width: 530px;
+}
+
+.board__no-content__head {
+	font-size: 55px;
+	font-weight: normal;
+	margin-block-start: 0;
+	margin-block-end: 40px;
+}
+
+.board__no-content__text {
+	font-size: 22px;
+    color: #757575;
+    font-weight: normal;
+    margin: 0;
+    line-height: 35px;
 }

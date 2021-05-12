@@ -11,7 +11,7 @@ Moon.run(() => {
 	const data = {
 		name: "Moon",
 		hello: "Hello world!",
-		boards: [{}],
+		boards: [],
 	};
 
 	return {
