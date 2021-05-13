@@ -8,6 +8,6 @@ const { div, main, h1 } = Moon.view.m;
 export default ({ data }) => 
     <main class="main">
         <topbar />
-        <sidebar />
+        <sidebar data=data />
         <board data=data />
     </main>;

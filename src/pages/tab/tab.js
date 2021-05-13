@@ -10,8 +10,14 @@ Moon.use({
 Moon.run(() => {
 	const data = {
 		name: "Moon",
-		hello: "Hello world!",
-		boards: [],
+		activeBoard: "Math fundamentals",
+		boards: [
+			{ name: 'Physics', color: '#BE6FE5' },
+			{ name: 'Math fundamentals', color: '#9EE56F' },
+			{ name: 'Electronics', color: '#E5AA6F' },
+			{ name: '.NET', color: '#E56F6F' },
+			{ name: 'Java Script', color: '#6FDDE5' },
+		],
 	};
 
 	return {
