@@ -10,7 +10,7 @@ Moon.use({
 Moon.run(() => {
 	const data = {
 		name: "Moon",
-		activeBoard: "Math fundamentals",
+		activeBoard: "Electronics",
 		boards: [
 			{ name: 'Physics', color: '#BE6FE5' },
 			{ name: 'Math fundamentals', color: '#9EE56F' },
@@ -18,6 +18,9 @@ Moon.run(() => {
 			{ name: '.NET', color: '#E56F6F' },
 			{ name: 'Java Script', color: '#6FDDE5' },
 		],
+		sidebar: {
+			
+		}
 	};
 
 	return {

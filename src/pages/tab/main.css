@@ -3,6 +3,7 @@
 	--main-color: #F3F3F3;
 	--secondary-color: #4AD43B;
 
+	--sidebar-width: 300px;
 	--sidebar-background-color: #191919;
 	--sidebar-color: #5E5E5E;
 }
@@ -25,6 +26,10 @@ html, body {
 	height: 100vh;
 }
 
+button {
+	cursor: pointer;
+}
+
 /* Why h2's parent gets h2 margin value? */
 h2 {
 	font-weight: inherit;
@@ -34,6 +39,12 @@ h2 {
 p {
 	font-size: 21px;
 	font-weight: 200;
+}
+
+small {
+	padding: 5px;
+    font-size: 14px;
+    display: block;
 }
 
 .s-x-15 {width: 120px;}
@@ -51,12 +62,26 @@ p {
     margin-block-end: 40px;
 }
 
+.escape {
+	font-family: monospace;
+    display: inline-block;
+    color: #b34826;
+	padding: 0px 4px;
+}
+
+.enter {
+	font-family: monospace;
+    display: inline-block;
+    color: #16841b;
+    padding: 0px 4px;
+}
+
 .sidebar {
 	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100vh;
-	width: 380px;
+	width: var(--sidebar-width);
 	background-color: var(--sidebar-background-color);
 	color: var(--sidebar-color);
 	padding: 55px 35px;
@@ -64,6 +89,59 @@ p {
     flex-direction: column;
     justify-content: space-between;
 }
+
+/* Sidebar create board */
+.sidebar__create {
+	display: none;
+	margin-bottom: 30px;
+}
+
+.sidebar__create--opened {
+	display: block;
+}
+
+.sidebar__create__input-wrapper {
+	position: relative;
+}
+
+.sidebar__create__input {
+	width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 0px 45px 0px 15px;
+    background-color: #212121;
+    border-radius: 10px;
+    color: var(--main-color);
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+
+.sidebar__create__color {
+	cursor: pointer;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: yellowgreen;
+	position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 5px;
+}
+
+.sidebar__create__color-picker {
+	display: none;
+	position: absolute;
+	top: -50%;
+	transform: translateX(calc(100% + 20px));
+}
+
+.sidebar__create__color-picker--opened {
+	display: block;
+}
+
+/* Sidebar ceate board */
+
 
 .sidebar__boards__header {
 	display: flex;
@@ -74,7 +152,7 @@ p {
 .sidebar__boards__header__title {
 	color: var(--sidebar-color);
 	margin: 0;
-	line-height: 38px;
+	line-height: 40px;
 	font-size: 20px;
 }
 
@@ -101,6 +179,10 @@ p {
     padding: 10px;
 }
 
+.sidebar__boards__list__item:hover a {
+	color: var(--main-color);
+}
+
 .sidebar__boards__list__item--active {
 	background: var(--main-background-color);
 	border-radius: 20px;
@@ -117,18 +199,28 @@ p {
 	text-decoration: none;
 	color: var(--sidebar-color);
 	margin-left: 25px;
+	transition: color 0.3s;
 }
 
 .sidebar__search__input {
 	width: 100%;
-	border: none;
+    border: none;
     outline: none;
-	font-size: 16px;
-    padding: 10px 15px;
-	background-color: #212121;
-	border-radius: 10px;
-	color: var(--main-color);
+    font-size: 16px;
+    padding: 0 15px;
+    background-color: #212121;
+    border-radius: 10px;
+    color: var(--main-color);
+    line-height: 40px;
+	margin-bottom: 10px;
 }
+
+/* .sidebar__search__color-picker {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: #4AD43B;
+} */
 
 .main {
 	padding-left: 380px;
@@ -165,3 +257,130 @@ p {
     margin: 0;
     line-height: 35px;
 }
+
+/* Color-picker */
+
+.color-picker {
+    background: #131313;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+.color-picker__input__wrapper {
+	position: relative;
+}
+
+.color-picker__preview {
+	width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 5px;
+	border: 3px solid #212121;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.color-picker__preview--picked {
+	border: none;
+}
+
+.color-picker__input {
+	width: 100%;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    background-color: #212121;
+    border-radius: 6px;
+    color: var(--main-color);
+    line-height: 30px;
+	margin-bottom: 15px;
+	padding-right: 40px;
+}
+
+.color-picker__palete div:last-child {
+	margin-bottom: 0;
+}
+
+.color-picker__row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    min-height: 20px;
+    align-items: center;
+}
+
+.color-picker__item {
+	cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+	justify-content: center;
+    align-items: center;
+}
+
+.color-picker__item span {
+	cursor: pointer;
+    width: 10px;
+    height: 10px;
+    display: block;
+    border-radius: 50%;
+	transition: all 0.1s;
+}
+
+.color-picker__item:hover span {
+    width: 15px;
+    height: 15px;
+}
+
+.color-picker__item--active {
+    background: red !important;
+}
+
+/* End of color-picker */
+
+/* Selectbox */
+.selecbox__selected {
+	width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 0 15px;
+    background-color: #212121;
+    border-radius: 10px;
+    color: var(--main-color);
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+
+.selectbox__dropdown__list {
+	background-color: #131313;;
+	list-style: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden;
+	padding: 0 15px;
+}
+
+.selectbox__dropdown__item {
+	cursor: pointer;
+    line-height: 40px;
+    border-bottom: 1px solid var(--main-background-color);
+}
+
+/* End of selectbox */
+
+/* Actions */
+.actions .actions__button:first-child {
+	margin-right: 5px;
+}
+
+.actions__button {
+	background-color: #131313;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 10px;
+}
+/* End of actions */
