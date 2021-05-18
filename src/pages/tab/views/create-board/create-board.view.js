@@ -3,43 +3,65 @@ import colors from '../color-picker/colors';
 import actions from '../actions';
 import main from '../main';
 import colorPicker from '../color-picker';
+import add from '../../event-handler';
 
-const { div, h3, input, span } = Moon.view.m;
+const { div, h3, input, button } = Moon.view.m;
 let colorPickerOpened = false;
 let createCallback;
 let cancelCallback;
 
-const getInput = () => document.querySelector('.sidebar__create__input').value;
+const getInputElement = () => document.querySelector('.sidebar__create__input'); 
 
-const emptyInput = () => document.querySelector('.sidebar__create__input').value = "";
+const getInput = () => getInputElement().value;
 
-const toggleColorPicker = () => {
-    const popup = document.getElementsByClassName('sidebar__create__color-picker')[0];
-    if (colorPickerOpened) {
-        popup.classList.remove('sidebar__create__color-picker--opened');
-    } else {
-        popup.classList.add('sidebar__create__color-picker--opened');
+const setEmptyInput = () => getInputElement().value = "";
+
+const focusInput = () => getInputElement().focus();
+
+const toggleColorPicker = ({ view }) => {
+    view.stopPropagation();
+    
+    colorPickerOpened ? 
+        hidePopup() :
+        showPopup() ;
+}
+
+const closeColorPicker = (event) => {
+    if (!colorPickerOpened) {
+        return;
     }
 
-    colorPickerOpened = !colorPickerOpened;
+    hidePopup();
 }
 
 const getColor = () => {
     return document.getElementsByClassName('sidebar__create__color')[0].style.backgroundColor;
 }
+
 const setColor = (color) => {
     const popup = document.getElementsByClassName('sidebar__create__color')[0];
     popup.style.backgroundColor = color;
+
+    focusInput();
+}
+
+const onColorPicked = (color) => {
+    setColor(color);
+
 }
 
 const hidePopup = () => {
     const popup = document.getElementsByClassName('sidebar__create__color-picker')[0];
     popup.classList.remove('sidebar__create__color-picker--opened');
+
+    colorPickerOpened = false;
 }
 
 const showPopup = () => {
     const popup = document.getElementsByClassName('sidebar__create__color-picker')[0];
     popup.classList.add('sidebar__create__color-picker--opened');
+
+    colorPickerOpened = true;
 }
 
 const onEscape = (data) => {
@@ -89,12 +111,13 @@ export default ({ create, cancel }) => {
     cancelCallback = cancel;
 
     const defaultColor = colors[0];
+    add(closeColorPicker);
 
     return <div class="sidebar__create">
             <h3 class="sidebar__create__title">Creat new board</h3>
             <div class="sidebar__create__input-wrapper">
                 <input @keydown=onEscape class="sidebar__create__input" type="text" placeholder="Name" focus="true" />
-                <span style={ backgroundColor: defaultColor } @click=toggleColorPicker class="sidebar__create__color"></span>
+                <button style={ backgroundColor: defaultColor } @click=toggleColorPicker class="sidebar__create__color"></button>
                 <div class="sidebar__create__color-picker">
                     <colorPicker callback=setColor />
                 </div>

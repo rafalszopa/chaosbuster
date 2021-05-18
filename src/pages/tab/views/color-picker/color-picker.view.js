@@ -17,7 +17,6 @@ const onClick = ({ data, view }) => {
 
     callback(color);
 
-    // To be removed
     const dataNew = {
         ...data,
         sidebar: {
@@ -36,7 +35,6 @@ const onClick = ({ data, view }) => {
 }
 
 const colorView = ({ data }) => {
-    // console.log(data);
     let rows = [];
     let currentRow = [];
 
@@ -56,7 +54,6 @@ let callback;
 
 export default (data) => {
     callback = data.callback;
-    // console.log(data)
 
     return <div class="color-picker">
         <div class="color-picker__input__wrapper">

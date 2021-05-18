@@ -122,11 +122,16 @@ small {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	background-color: yellowgreen;
 	position: absolute;
     right: 10px;
     top: 10px;
     border-radius: 5px;
+	transition: opacity 0.3s;
+	border: none;
+}
+
+.sidebar__create__color:hover {
+	opacity: 0.7;
 }
 
 .sidebar__create__color-picker {
@@ -165,6 +170,11 @@ small {
 	font-size: 26px;
 	color: var(--secondary-color);
 	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.sidebar__boards__header__create-button:hover {
+	background-color: #131313;
 }
 
 .sidebar__boards__list {
@@ -382,5 +392,20 @@ small {
 	height: 40px;
 	border: none;
 	border-radius: 10px;
+	transition: all 0.2s;
+}
+
+.actions__button:disabled:hover img {
+	background-color: #4AD43B;
+}
+
+.actions__button:disabled img {
+	filter: grayscale(100%);
+	opacity: 0.5;
+}
+
+.actions__button:hover {
+	/* background-color: var(--main-background-color); */
+	background-color: black;
 }
 /* End of actions */
