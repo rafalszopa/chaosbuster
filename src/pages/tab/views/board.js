@@ -12,15 +12,13 @@ const noBoards = () =>
     </div>;
 
 const board = () =>
-    <h2 @click=click>Board</h2>;
+    <h2 >Board</h2>;
 
 export default ({ data }) =>
     <div class="board">
         <(
             data.boards.length ?
-                <noBoards /> :
-                <board /> 
+                <board /> :
+                <noBoards />
         )*>
     </div>;
-
-const click = ({data}) => console.log(data);

@@ -2,6 +2,7 @@
   "name": "chaosbuster",
   "version": "1",
   "manifest_version": 3,
+  "permissions": ["storage"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {

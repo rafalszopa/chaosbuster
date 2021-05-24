@@ -1,30 +1,45 @@
 import Moon from "moon";
 import main from "./views";
+import storage from './drivers';
 import "./main.css";
 
+const { div, pre } = Moon.view.m;
+
 Moon.use({
+	storage,
 	data: Moon.data.driver,
 	view: Moon.view.driver("#root")
 });
 
-Moon.run(() => {
+const init = ({ storage }) => {
+	console.log(storage);
+
+	let boards = [];
+	if (storage?.boards) {
+		boards = storage.boards;
+	}
+
 	const data = {
-		name: "Moon",
-		activeBoard: "Electronics",
-		boards: [
-			{ name: 'Physics', color: '#BE6FE5' },
-			{ name: 'Math fundamentals', color: '#9EE56F' },
-			{ name: 'Electronics', color: '#E5AA6F' },
-			{ name: '.NET', color: '#E56F6F' },
-			{ name: 'Java Script', color: '#6FDDE5' },
-		],
-		sidebar: {
-			
-		}
+		sidebar: {},
+		boards: storage?.boards ? storage.boards : [],
 	};
 
 	return {
 		data,
 		view: <main data=data />
 	};
-});
+}
+
+// is it possible to use this mediator pattern in order to animate and
+Moon.run(() => {
+	// Token get coin { get, onLoad } or { set } requests (kind of CQS?)
+	const storageToken = {
+		get: "boards",
+		onLoad: init,
+	};
+
+	return { 
+		storage: storageToken,
+		view: <pre>Loading</pre>
+	 };
+})

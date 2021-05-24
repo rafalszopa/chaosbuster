@@ -87,19 +87,26 @@ const searchComponent = () =>
         <input class="sidebar__search__input" type="text" placeholder="Search" />
     </div>;
 
-const onCreate = ({ data }, board) => {
+const onCreate = ({ data, storage }, board) => {
     const dataNew = {
         ...data,
         boards: [
             ...data.boards,
+
+            // here
             board,
         ]
+    }
+
+    const storageNew = {
+        boards: dataNew.boards,
     }
     
     hideCreatePopup();
 
     return {
         data: dataNew,
+        storage: storageNew,
         view: <main data=dataNew />
     }
 }

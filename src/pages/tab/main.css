@@ -154,7 +154,8 @@ small {
 	margin-bottom: 30px;
 }
 
-.sidebar__boards__header__title {
+.sidebar__boards__header__title,
+.sidebar__create__title {
 	color: var(--sidebar-color);
 	margin: 0;
 	line-height: 40px;
@@ -210,6 +211,7 @@ small {
 	color: var(--sidebar-color);
 	margin-left: 25px;
 	transition: color 0.3s;
+	font-size: 16px;
 }
 
 .sidebar__search__input {
