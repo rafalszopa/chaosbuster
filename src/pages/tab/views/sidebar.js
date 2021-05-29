@@ -58,10 +58,24 @@ const headerComponent = () => {
     });
 }
 
+const onBoardClicked = link => ({ data, route }) => {
+    const dataNew = {
+        ...data,
+        selectedBoard: link
+    };
+
+    return {
+        data: dataNew,
+        route: "/board",
+        view: <main data=dataNew route="/board" />
+    }
+}
+
 const listComponent = data => {
     return ul({
         class: "sidebar__boards__list",
         children: data.boards.map(board => li({
+            "@click": onBoardClicked(board.name),
             class: data.activeBoard !== board.name ? 
                 "sidebar__boards__list__item" : 
                 "sidebar__boards__list__item sidebar__boards__list__item--active",
@@ -107,7 +121,7 @@ const onCreate = ({ data, storage }, board) => {
     return {
         data: dataNew,
         storage: storageNew,
-        view: <main data=dataNew />
+        view: <main route="/" data=dataNew />
     }
 }
 

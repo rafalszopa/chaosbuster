@@ -11,14 +11,22 @@ const noBoards = () =>
         </div>
     </div>;
 
-const board = () =>
-    <h2 >Board</h2>;
+const boardView = () =>
+    <h2>Board sinis</h2>;
 
-export default ({ data }) =>
-    <div class="board">
-        <(
-            data.boards.length ?
-                <board /> :
-                <noBoards />
-        )*>
-    </div>;
+const getBoard = data => data.boards.find(board => board.name === data.selectedBoard);
+
+export default ({ data }) => {
+    const board = getBoard(data);
+
+    return (
+        <div class="board">
+            <h1>{ board?.name }</h1>
+            <(
+                data?.boards.length ?
+                    <boardView /> :
+                    <noBoards />
+            )*>
+        </div>
+    );
+}

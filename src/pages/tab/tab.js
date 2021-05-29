@@ -1,19 +1,19 @@
 import Moon from "moon";
 import main from "./views";
-import storage from './drivers';
+import drivers from './drivers';
 import "./main.css";
 
 const { div, pre } = Moon.view.m;
 
 Moon.use({
-	storage,
+	// This router does not allow page to be refreshed
+	route: drivers.route,
+	storage: drivers.storage,
 	data: Moon.data.driver,
 	view: Moon.view.driver("#root")
 });
 
-const init = ({ storage }) => {
-	console.log(storage);
-
+const init = ({ storage, route }) => {
 	let boards = [];
 	if (storage?.boards) {
 		boards = storage.boards;
@@ -25,8 +25,9 @@ const init = ({ storage }) => {
 	};
 
 	return {
+		route: "/",
 		data,
-		view: <main data=data />
+		view: <main data=data route="/" />
 	};
 }
 

@@ -1,3 +1,6 @@
+import route from './route.driver';
 import storage from './storage.driver';
 
-export default storage;
+export default {
+    route, storage
+};
