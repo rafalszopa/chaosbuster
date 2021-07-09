@@ -15,7 +15,6 @@ const routesFactory = () => ({
 });
 
 export default ({ data, route }) => {
-    console.log('Data ', data)
     const routes = routesFactory();
 
     return (
@@ -26,3 +25,4 @@ export default ({ data, route }) => {
         </main>
     );
 }
+

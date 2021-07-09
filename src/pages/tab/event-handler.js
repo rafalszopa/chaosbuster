@@ -11,7 +11,7 @@ const handlers = [];
 // }
 
 function handle(event) {
-    console.log(event);
+    // console.log(event);
     if (handlers.length) {
         handlers.forEach(handler => handler(event));
     }

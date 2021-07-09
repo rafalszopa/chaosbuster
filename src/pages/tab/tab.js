@@ -6,21 +6,14 @@ import "./main.css";
 const { div, pre } = Moon.view.m;
 
 Moon.use({
-	// This router does not allow page to be refreshed
-	route: drivers.route,
-	storage: drivers.storage,
-	data: Moon.data.driver,
-	view: Moon.view.driver("#root")
+	route:		drivers.route,
+	storage:	drivers.storage,
+	data:		Moon.data.driver,
+	view:		Moon.view.driver("#root")
 });
 
-const init = ({ storage, route }) => {
-	let boards = [];
-	if (storage?.boards) {
-		boards = storage.boards;
-	}
-
+const init = ({ storage }) => {
 	const data = {
-		sidebar: {},
 		boards: storage?.boards ? storage.boards : [],
 	};
 
@@ -31,16 +24,17 @@ const init = ({ storage, route }) => {
 	};
 }
 
-// is it possible to use this mediator pattern in order to animate and
+// is it possible to use this mediator pattern in order to animate 
 Moon.run(() => {
 	// Token get coin { get, onLoad } or { set } requests (kind of CQS?)
-	const storageToken = {
-		get: "boards",
-		onLoad: init,
+	const token = {
+		action: "get",
+		key: "boards",
+		callback: init, 
 	};
 
 	return { 
-		storage: storageToken,
+		storage: token,
 		view: <pre>Loading</pre>
 	 };
 })

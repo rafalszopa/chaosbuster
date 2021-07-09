@@ -96,31 +96,26 @@ const listComponent = data => {
     }) 
 }
 
-const searchComponent = () =>
-    <div class="sidebar__search">
-        <input class="sidebar__search__input" type="text" placeholder="Search" />
-    </div>;
 
 const onCreate = ({ data, storage }, board) => {
     const dataNew = {
         ...data,
         boards: [
             ...data.boards,
-
-            // here
             board,
         ]
     }
 
-    const storageNew = {
-        boards: dataNew.boards,
+    const token = {
+        action: "set",
+        data: { boards: dataNew.boards },
     }
     
     hideCreatePopup();
 
     return {
         data: dataNew,
-        storage: storageNew,
+        storage: token,
         view: <main route="/" data=dataNew />
     }
 }
@@ -146,11 +141,18 @@ const onCancel = () => {
 
 const viewCreate = () => <createBoard create=onCreate cancel=onCancel />;
 
+const searchComponent = () =>
+    <div class="sidebar__search">
+        <input class="sidebar__search__input" type="text" placeholder="Search" />
+    </div>;
+
+
 export default ({ data }) => {
     const boards = boardsComponent(data);
     const search = searchComponent();
 
     const children = [boards, search];
+    // const children = [search];
 
     return div({
         class: "sidebar",
