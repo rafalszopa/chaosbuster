@@ -16,22 +16,6 @@ const onClick = ({ data, view }) => {
     preview.style.backgroundColor = color;
 
     callback(color);
-
-    const dataNew = {
-        ...data,
-        sidebar: {
-            ...data.sidebar,
-            boardNew: {
-                ...data.sidebar.boardNew,
-                color,
-            }
-        }
-    }
-
-    return {
-        data: dataNew,
-        view: <main data=data />
-    }
 }
 
 const colorView = ({ data }) => {
