@@ -6,14 +6,14 @@ const { a, button, div, input, ul, li, h3, span, text, small, select, option } =
 
 const boardsComponent = (data) => {
     const create = viewCreate(data);
-    const header = headerComponent();
     const list = listComponent(data);
+    const header = headerComponent();
 
     return div({
         class: "sidebar__boards",
         children: [
-            create,
             header,
+            create,
             list,
         ]
     })
@@ -58,24 +58,20 @@ const headerComponent = () => {
     });
 }
 
-const onBoardClicked = link => ({ data, route }) => {
-    const dataNew = {
-        ...data,
-        selectedBoard: link
-    };
+const onBoardClicked = index => ({ data, route }) => {
+    const routeNew = `/board/${index}`;
 
     return {
-        data: dataNew,
-        route: "/board",
-        view: <main data=dataNew route="/board" />
+        route: routeNew,
+        view: <main data=data route=routeNew />
     }
 }
 
 const listComponent = data => {
     return ul({
         class: "sidebar__boards__list",
-        children: data.boards.map(board => li({
-            "@click": onBoardClicked(board.name),
+        children: data.boards?.map((board, index) => li({
+            "@click": onBoardClicked(index),
             class: data.activeBoard !== board.name ? 
                 "sidebar__boards__list__item" : 
                 "sidebar__boards__list__item sidebar__boards__list__item--active",
@@ -102,8 +98,8 @@ const onCreate = ({ data, storage }, board) => {
         ...data,
         boards: [
             ...data.boards,
-            board,
-        ]
+            board
+        ],
     }
 
     const token = {
@@ -130,11 +126,6 @@ const hideCreatePopup = () => {
     popup.classList.remove('sidebar__create--opened');
 }
 
-// const setColor = (color) => {
-//     const colorPreview = document.getElementsByClassName('.sidebar__create__color')[0];
-//     colorPreview.style.backgroundColor = 'red';
-// }
-
 const onCancel = () => {
     hideCreatePopup();
 }
@@ -152,7 +143,6 @@ export default ({ data }) => {
     const search = searchComponent();
 
     const children = [boards, search];
-    // const children = [search];
 
     return div({
         class: "sidebar",

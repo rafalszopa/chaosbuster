@@ -1,4 +1,6 @@
 import Moon from 'moon';
+import uuid from 'uuid';
+
 import colors from '../color-picker/colors';
 import actions from '../actions';
 import main from '../main';
@@ -47,7 +49,6 @@ const setColor = (color) => {
 
 const onColorPicked = (color) => {
     setColor(color);
-
 }
 
 const hidePopup = () => {
@@ -86,7 +87,7 @@ const onCreate = (data) => {
         return;
     }
 
-    const output = createCallback(data, { name: input, color: getColor() });
+    const output = createCallback(data, { id: uuid(), name: input, color: getColor(), columns: [{ cards: [] }, { cards: [] }, { cards: [] }] });
     clear();
 
     return output ? output : {};
