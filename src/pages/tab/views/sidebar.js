@@ -44,7 +44,7 @@ const headerComponent = () => {
                 ]
             }),
             button({
-                class: "sidebar__boards__header__create-button",
+                class: "btn-add",
                 "@click": onCreateNewClicked,
                 children: [
                     text({ data: "+" })

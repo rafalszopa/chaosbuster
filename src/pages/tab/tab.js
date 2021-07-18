@@ -1,7 +1,7 @@
 import Moon from "moon";
 import main from "./views";
 import drivers from './drivers';
-import "./main.css";
+import "./styles/main.scss";
 
 const { div, pre } = Moon.view.m;
 

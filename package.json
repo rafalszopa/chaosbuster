@@ -24,6 +24,8 @@
 		"moon-loader": "latest",
 		"optimize-css-assets-webpack-plugin": "latest",
 		"purgecss-webpack-plugin": "latest",
+		"sass": "^1.35.2",
+		"sass-loader": "^12.1.0",
 		"terser-webpack-plugin": "latest",
 		"webpack": "^5.36.2",
 		"webpack-cli": "^4.7.2",

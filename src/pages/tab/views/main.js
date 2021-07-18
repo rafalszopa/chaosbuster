@@ -33,6 +33,4 @@ export default ({ data, route }) => {
 
 /boards/0
 
-
-
 */

@@ -2,7 +2,7 @@ import Moon from 'moon';
 import uuid from 'uuid';
 
 import colors from '../color-picker/colors';
-import actions from '../actions';
+import { actionButtons } from '../shared';
 import main from '../main';
 import colorPicker from '../color-picker';
 import add from '../../event-handler';
@@ -123,7 +123,7 @@ export default ({ create, cancel }) => {
                     <colorPicker callback=setColor />
                 </div>
             </div>
-            <actions ok=onCreate cancel=onCancel />
+            <actionButtons ok=onCreate cancel=onCancel />
         </div>;
 }
 
