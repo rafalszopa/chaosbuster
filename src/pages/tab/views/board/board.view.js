@@ -16,10 +16,9 @@ const noBoards = () =>
         </div>
     </div>;
 
-const columnComponent = (column, columnIndex, index)  => {
-
+const columnComponent = (column, columnIndex, boardIndex)  => {
     return <div class="board__column">
-        <createCardView />
+        <createCardView columnIndex=columnIndex boardIndex=boardIndex />
         <div children=(column.cards.map((card) => <div><h2>{ card.name }</h2></div>)) />
     </div>
 }

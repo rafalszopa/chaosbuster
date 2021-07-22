@@ -1,26 +1,8 @@
 import Moon from 'moon';
 
-const { button, div, h1, img } = Moon.view.m;
-
-let okCallback;
-let cancelCallback;
-
-const onOk = (data) => {
-    if (okCallback) {
-        okCallback(data);
-    }
-}
-
-const onCancel = (data) => {
-    if (cancelCallback) {
-        cancelCallback(data);
-    }
-}
+const { button, div, img } = Moon.view.m;
 
 export default ({ ok, cancel }) => {
-    okCallback = ok;
-    cancelCallback = cancel;
-
     return <div class="actions">
         <button @click=ok class="actions__button">
             <img src="./assets/icons/tick-sign.svg" />

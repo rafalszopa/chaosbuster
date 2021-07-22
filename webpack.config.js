@@ -21,7 +21,7 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			moon: process.env.NODE_ENV === "development" ? "moon/dist/moon.js" : "moon"
+			moon: process.env.NODE_ENV === "development" ? "moon/dist/moon.js" : "moon/dist/moon.js"
 		},
 		modules: [
 			path.join(__dirname, "/src"),
